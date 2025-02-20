@@ -9,9 +9,9 @@
 </p>
 
 <div align="center">
-<img src="https://colah.github.io/posts/2014-07-Conv-Nets-Modular/img/Conv-9-Conv3.png" width="80%">
+<img src="images/project-logo-cnn.jpg" width="80%">
 
-<div style="background-color: white; width: 80%"><img style="padding: 25 0" src="https://colah.github.io/posts/2015-08-Understanding-LSTMs/img/RNN-unrolled.png" width="90%"></div>
+<img src="images/project-logo-rnn.jpg" width="80%">
 </div>
 
 <br>
