@@ -85,7 +85,7 @@ class ArxivDataset(Dataset):
         """
         categories = sorted(set(self.labels))
         return {cat: idx for idx, cat in enumerate(categories)}, {
-            idx: cat for cat, idx in enumerate(categories)
+            idx: cat for idx, cat in enumerate(categories)
         }
 
     def _text_to_tokens(self, text):

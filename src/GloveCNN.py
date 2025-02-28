@@ -1,17 +1,9 @@
 import torch
 import torch.nn as nn
-import torchtext
-
-# torchtext.disable_torchtext_deprecation_warning()
 import torch.nn.functional as F
-import numpy as np
+from torchsummary import summary
 
-# import gensim.downloader as api
-# from torchtext.vocab import GloVe
 from config import *
-
-# glove_embeddings = GloVe(name="6B", dim=300)  # 840B
-# model = api.load("word2vec-google-news-300")
 
 
 class GloveCNN(nn.Module):
@@ -88,6 +80,7 @@ class GloveCNN(nn.Module):
     def forward(self, x):
         # Embedding lookup
         # print(x.size())
+        x = x.long()  # remove if not working
         x = self.embedding(x)  # (batch_size, sequence_length, embedding_size)
         # x = x.unsqueeze(1)  # (batch_size, 1, sequence_length, embedding_size)
         x = x.permute(0, 2, 1)  # (batch_size, embedding_size, sequence_length)
@@ -153,15 +146,18 @@ class GloveCNN(nn.Module):
         self.total_loss = losses + self.l2_reg_lambda * self.l2_loss
         return self.total_loss
 
-    def print_model_architecture(self):
+    def print_model_summary(self):
         """
         Print model summary and architecture details.
         """
         print("\nModel Summary:")
         print(self)
         print("\nLayer Information:")
-        print(f"Embedding Layer: {self.embedding}")
-        for i, conv in enumerate(self.convs):
-            print(f"Conv Layer {i}: {conv}")
-        print(f"Fully Connected Layer: {self.fc}")
-        print(f"Dropout Layer: {self.dropout}")
+        print(
+            summary(
+                self,
+                input_size=(MAX_LENGTH,),
+                batch_size=BATCH_SIZE,
+                device="cpu",
+            )
+        )

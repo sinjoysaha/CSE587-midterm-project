@@ -1,7 +1,6 @@
 # %%
 
 import pandas as pd
-
 from config import *
 
 
@@ -91,7 +90,7 @@ plot_year_category(cs_only_df)
 # cs_only_df.groupby([cs_only_df["update_date"].dt.year, "primary_category"]).size().unstack().plot(kind="bar", stacked=True)
 
 
-# %%
+# %% Create train and test datasets
 import torch
 from sklearn.model_selection import train_test_split
 from utils import clean_text
@@ -101,24 +100,31 @@ def get_train_test(df, keep_cols=["title", "abstract", "categories", "update_dat
     df = df[keep_cols]
     df["clean_title"] = df["title"].map(clean_text)
     df["clean_abstract"] = df["abstract"].map(clean_text)
+    df["clean_title_abstract"] = df["clean_title"] + " " + df["clean_abstract"]
 
     before_2020_df = df[
         (df["update_date"].dt.year >= 2015) & (df["update_date"].dt.year <= 2020)
     ]
 
     train_df, test_same_year_df = train_test_split(
-        before_2020_df, test_size=0.4, random_state=42
+        before_2020_df, test_size=0.25, random_state=42
     )
+
+    train_df, val_df = train_test_split(train_df, test_size=0.33, random_state=42)
 
     test_diff_year_df = df[(df["update_date"].dt.year == 2023)]
 
-    print(train_df.shape, test_same_year_df.shape, test_diff_year_df.shape)
+    print(
+        train_df.shape, val_df.shape, test_same_year_df.shape, test_diff_year_df.shape
+    )
 
     # save to torch file .pt
-    fnames = ["train.pt", "test_same_year.pt", "test_diff_year.pt"]
-    for dataset, fn in zip([train_df, test_same_year_df, test_diff_year_df], fnames):
+    fnames = ["train.pt", "val.pt", "test_same_year.pt", "test_diff_year.pt"]
+    for dataset, fn in zip(
+        [train_df, val_df, test_same_year_df, test_diff_year_df], fnames
+    ):
         temp_dict = {
-            "data": dataset["clean_title"].tolist(),
+            "data": dataset["clean_title_abstract"].tolist(),
             "labels": dataset["categories"].tolist(),
         }
 
@@ -126,10 +132,10 @@ def get_train_test(df, keep_cols=["title", "abstract", "categories", "update_dat
 
     # torch.save(train_df, "train_df.pt")
 
-    return train_df, test_same_year_df, test_diff_year_df
+    return train_df, val_df, test_same_year_df, test_diff_year_df
 
 
-train_df, test_same_year_df, test_diff_year_df = get_train_test(cs_top5_df)
+train_df, val_df, test_same_year_df, test_diff_year_df = get_train_test(cs_top5_df)
 
 # %%
 plot_year_category(train_df, type="bar")
