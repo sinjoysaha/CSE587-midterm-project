@@ -1,8 +1,10 @@
 # Percentage of the training data to use for validation
 DEV_SAMPLE_PERCENTAGE = 0.2
 
+RUN_NAME = "GloveCNN"
+
 # CNN Model Hyperparameters
-EMBEDDING_DIM = 50  # Dimensionality of character embedding
+EMBEDDING_DIM = 200  # 100  # 50  # Dimensionality of character embedding
 FILTER_SIZES = [3, 3, 3]  # List of filter sizes
 NUM_FILTERS = 128  # Number of filters per filter size
 DROPOUT_KEEP_PROB = 0.5  # Dropout keep probability

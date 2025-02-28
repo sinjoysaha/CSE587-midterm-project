@@ -3,9 +3,14 @@ from datetime import datetime
 import numpy as np
 import torch
 from torch.utils.tensorboard import SummaryWriter
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import (
+    classification_report,
+    confusion_matrix,
+    precision_recall_curve,
+    auc,
+)
 
-from config import NUM_CLASSES
+from config import *
 
 
 class ModelTrainer:
@@ -26,7 +31,7 @@ class ModelTrainer:
             os.path.join(
                 os.path.curdir,
                 "runs",
-                datetime.now().strftime("%Y-%m-%d_%H-%M-%S"),
+                f"{RUN_NAME}{EMBEDDING_DIM}_{datetime.now().strftime('%m%d%H%M')}",
             )
         )
         self.train_summary_writer = SummaryWriter(os.path.join(self.out_dir, "train"))
@@ -164,4 +169,18 @@ class ModelTrainer:
 
         # save plt image
         cfm_plot.figure.savefig(f"{self.out_dir}/{cm_fname}_cm.png")
+
+        # PR curve
+        # precision, recall, thresholds = precision_recall_curve(all_labels, all_preds)
+        # pr_auc = auc(recall, precision)
+
+        # plt.figure(figsize=(8, 6))
+        # plt.plot(recall, precision, marker=".", label=f"PR Curve (AUC = {pr_auc:.2f})")
+        # plt.xlabel("Recall")
+        # plt.ylabel("Precision")
+        # plt.title("Precision-Recall Curve")
+        # plt.legend()
+        # plt.grid()
+        # plt.savefig(f"{self.out_dir}/{cm_fname}_pr_curve.png", dpi=300)
+
         print("Testing complete.")

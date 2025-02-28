@@ -1,0 +1,106 @@
+GloVe embeddings loaded...
+Dimensions: 100
+Loading data
+Loaded train data
+Loaded validation data
+Loaded test (same year) data
+Loaded test (diff year) data
+Loading GloveCNN model
+GloVe embeddings loaded...
+Dimensions: 100
+
+Model Summary:
+GloveCNN(
+  (embedding): Embedding(400000, 100)
+  (conv1): Conv1d(100, 128, kernel_size=(3,), stride=(1,), padding=same)
+  (maxpool1): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv2): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=same)
+  (maxpool2): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (conv3): Conv1d(128, 128, kernel_size=(3,), stride=(1,), padding=same)
+  (maxpool3): MaxPool1d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (fc): Linear(in_features=4096, out_features=5, bias=True)
+)
+
+Layer Information:
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+         Embedding-1            [512, 256, 100]      40,000,000
+            Conv1d-2            [512, 128, 256]          38,528
+         MaxPool1d-3            [512, 128, 128]               0
+            Conv1d-4            [512, 128, 128]          49,280
+         MaxPool1d-5             [512, 128, 64]               0
+            Conv1d-6             [512, 128, 64]          49,280
+         MaxPool1d-7             [512, 128, 32]               0
+            Linear-8                   [512, 5]          20,485
+================================================================
+Total params: 40,157,573
+Trainable params: 157,573
+Non-trainable params: 40,000,000
+----------------------------------------------------------------
+Input size (MB): 0.50
+Forward/backward pass size (MB): 436.02
+Params size (MB): 153.19
+Estimated Total Size (MB): 589.71
+----------------------------------------------------------------
+None
+Loaded model
+Initializing model trainer
+Traning model
+
+Epoch 1/20
+global_step: 0 | train_loss: 1.6021 | train_acc: 0.1875
+
+Evaluating model...
+global_step: 0 | val_loss: 1.4043 | val_acc : 0.5688
+
+Saved model checkpoint to /data/sks7620/cnn-rnn/src/runs/GloveCNN100_02281622/checkpoints/model_step_0.pt
+
+...
+
+
+Generating report
+------- Test on same year range data (2015 - 2020) -------
+
+Testing model...
+Test Loss: 0.5783
+              precision    recall  f1-score   support
+
+       cs.CL       0.99      0.88      0.93      2192
+       cs.CR       0.96      0.92      0.94      1117
+       cs.CV       0.86      0.99      0.92      5691
+       cs.LG       0.87      0.09      0.17       588
+       cs.RO       0.88      0.86      0.87       866
+
+    accuracy                           0.90     10454
+   macro avg       0.91      0.75      0.77     10454
+weighted avg       0.90      0.90      0.88     10454
+
+[[1927   12  248    4    1]
+ [   1 1033   77    3    3]
+ [  11    7 5617    1   55]
+ [  15   19  458   55   41]
+ [   0    6  112    0  748]]
+Testing complete.
+------- Test on different year range data (2023) -------
+
+Testing model...
+Test Loss: 1.6449
+              precision    recall  f1-score   support
+
+       cs.CL       0.95      0.81      0.87      4396
+       cs.CR       0.87      0.87      0.87      1450
+       cs.CV       0.69      0.99      0.81     10316
+       cs.LG       0.97      0.05      0.09      4038
+       cs.RO       0.87      0.85      0.86      2495
+
+    accuracy                           0.76     22695
+   macro avg       0.87      0.71      0.70     22695
+weighted avg       0.82      0.76      0.70     22695
+
+[[ 3553    31   790     4    18]
+ [   13  1259   154     2    22]
+ [   23    23 10189     0    81]
+ [  148   127  3375   186   202]
+ [    7     8   360     0  2120]]
+Testing complete.
