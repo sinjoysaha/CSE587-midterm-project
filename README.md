@@ -20,7 +20,7 @@
 
 👉 **Contributors**: `Sinjoy Saha`, `Xin Dong`
 
-👉 Read the full report [here](#).
+👉 Read the full report [here](/CSE_587_Midterm_Project_Report.pdf).
 
 ## 🔍Table of Contents
 
@@ -44,13 +44,15 @@
 
 ## Dataset Curation
 
-<div>
-
-<img align="right" src="images/CS_Categories.png" width="50%">
+<center>
+<img src="images/CS_Categories.png" width="40%">
         </div>
+</center>
 
 
 We curate the top-5 classes from arXiv CS papers.
+
+<center>
 
 | Category                          | Papers  | Percentage |
 | --------------------------------- | ------- | ---------- |
@@ -60,27 +62,29 @@ We curate the top-5 classes from arXiv CS papers.
 | cs.RO (Robotics)                  | 27,966  | 8.65%      |
 | cs.CR (Cryptography and Security) | 24,961  | 7.72%      |
 
-
-
-</div>
-
-sdfsd fs
+</center>
 
 
 
 ### Dataset Distribution
 
-<img align="center" src="images/traindata.png" width="95%">
+<center>
+<img src="images/traindata.png" width="40%">
+</center>
+
 
 #### OOD Test Data
 
-<img align="center" src="images/testdata.png" width="95%">
+<center>
+<img src="images/testdata.png" width="40%">
+</center>
 
 ## Models
 
+<center>
+
 ### Model Architecture
 
-<center>
 
 | Layer Type                   | Output Shape    | Glove50CNN Parameters | Glove100CNN Parameters | Glove200CNN Parameters |
 | ---------------------------- | --------------- | --------------------- | ---------------------- | ---------------------- |
@@ -137,8 +141,7 @@ sdfsd fs
 
 ### Confusion Matrix for Glove50CNN for 2015-2020 and 2023
 
-<img align="center" src="images/glovecnn50-test_diff_cm.png" width="30%">
-<img align="center" src="images/glovecnn50-test_same_cm.png" width="30%">
+<img src="images/glovecnn50-test_diff_cm.png" width="30%">   <img src="images/glovecnn50-test_same_cm.png" width="30%">
 
 ### Performance of Glove50CNN (2015-2020)
 
@@ -171,9 +174,11 @@ sdfsd fs
 
 ## Discussion
 
-### Impact of Embedding Size on Model Performance
 
 <center>
+
+### Impact of Embedding Size on Model Performance
+
 <img src="images/comp-model-perf.png" width="40%">
 </center>
 
