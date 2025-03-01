@@ -35,9 +35,8 @@
 - [Results](#results)
     - [Training and validation loss curves for GloveCNN models with embedding dimensions 50, 100 and 200.](#training-and-validation-loss-curves-for-glovecnn-models-with-embedding-dimensions-50-100-and-200)
     - [Training and validation accuracy curves for GloveCNN models with embedding dimensions 50, 100 and 200.](#training-and-validation-accuracy-curves-for-glovecnn-models-with-embedding-dimensions-50-100-and-200)
-  - [Confusion Matrix for Glove50CNN (2015-2020)](#confusion-matrix-for-glove50cnn-2015-2020)
+  - [Confusion Matrix for Glove50CNN for 2015-2020 and 2023](#confusion-matrix-for-glove50cnn-for-2015-2020-and-2023)
   - [Performance of Glove50CNN (2015-2020)](#performance-of-glove50cnn-2015-2020)
-  - [Confusion Matrix for Glove50CNN (2023)](#confusion-matrix-for-glove50cnn-2023)
   - [Performance of Glove50CNN (2023)](#performance-of-glove50cnn-2023)
 - [Discussion](#discussion)
   - [Impact of Embedding Size on Model Performance](#impact-of-embedding-size-on-model-performance)
@@ -45,9 +44,13 @@
 
 ## Dataset Curation
 
-<div style="display: flex; width: 100%; max-width: 800px; margin: auto;">
-        <div style="flex: 1; padding: 20px;">
-            We curate the top-5 classes from arXiv CS papers.
+<div>
+
+<img align="right" src="images/CS_Categories.png" width="50%">
+        </div>
+
+
+We curate the top-5 classes from arXiv CS papers.
 
 | Category                          | Papers  | Percentage |
 | --------------------------------- | ------- | ---------- |
@@ -60,11 +63,10 @@
 
 
 </div>
-<div align="center" style="flex: 1; padding: 20px;">
-            <img src="images/CS_Categories.png" width="99%">
-        </div>
 
-</div>
+sdfsd fs
+
+
 
 ### Dataset Distribution
 
@@ -112,80 +114,67 @@
 
 ## Results
 
-<div align="center"> 
+
+<center>
 
 #### Training and validation loss curves for GloveCNN models with embedding dimensions 50, 100 and 200.
+<img src="images/cnn-train-val-loss.png" width="60%">
+</center>
 
-<img  src="images/cnn-train-val-loss.png" width="80%">
 
+
+<center>
 
 #### Training and validation accuracy curves for GloveCNN models with embedding dimensions 50, 100 and 200.
-
-<img align="center" src="images/cnn-train-val-acc.png" width="80%">
-
-
-
-<div style="display: flex; width: 100%; max-width: 800px; margin: auto;">
-
-
-<div style="flex: 1; padding: 2px;">
-
-### Confusion Matrix for Glove50CNN (2015-2020)
-
-<img align="center" src="images/glovecnn50-test_diff_cm.png" width="100%">
+<img src="images/cnn-train-val-acc.png" width="60%">
+</center>
 
 ---
+
+
+
+<center>
+
+### Confusion Matrix for Glove50CNN for 2015-2020 and 2023
+
+<img align="center" src="images/glovecnn50-test_diff_cm.png" width="30%">
+<img align="center" src="images/glovecnn50-test_same_cm.png" width="30%">
 
 ### Performance of Glove50CNN (2015-2020)
 
-| Class  | Precision | Recall | F1-score | Count |
-|--------|-----------|--------|----------|-------|
-| cs.CL  | 0.91      | 0.97   | 0.94     | 4396  |
-| cs.CR  | 0.98      | 0.86   | 0.91     | 1450  |
-| cs.CV  | 0.93      | 0.96   | 0.94     | 10316 |
-| cs.LG  | 0.67      | 0.61   | 0.63     | 4038  |
-| cs.RO  | 0.95      | 0.80   | 0.87     | 2495  |
-| **Accuracy** | |  | **0.92**  |  |
-| **M Avg**    | **0.89** | **0.84** | **0.86** |  |
-| **W Avg**    | **0.92** | **0.92** | **0.92** |  |
-
-</div>
-
-<div style="flex: 1; padding: 2px;">
-
-### Confusion Matrix for Glove50CNN (2023)
-
-<img align="center" src="images/glovecnn50-test_same_cm.png" width="100%">
-
-
----
+| Class        | Precision | Recall   | F1-score | Count |
+| ------------ | --------- | -------- | -------- | ----- |
+| cs.CL        | 0.91      | 0.97     | 0.94     | 4396  |
+| cs.CR        | 0.98      | 0.86     | 0.91     | 1450  |
+| cs.CV        | 0.93      | 0.96     | 0.94     | 10316 |
+| cs.LG        | 0.67      | 0.61     | 0.63     | 4038  |
+| cs.RO        | 0.95      | 0.80     | 0.87     | 2495  |
+| **Accuracy** |           |          | **0.92** |       |
+| **M Avg**    | **0.89**  | **0.84** | **0.86** |       |
+| **W Avg**    | **0.92**  | **0.92** | **0.92** |       |
 
 ### Performance of Glove50CNN (2023)
 
-| Class  | Precision | Recall | F1-score | Count |
-|--------|-----------|--------|----------|-------|
-| cs.CL  | 0.80      | 0.96   | 0.87     | 4396  |
-| cs.CR  | 0.92      | 0.79   | 0.85     | 1450  |
-| cs.CV  | 0.82      | 0.95   | 0.88     | 10316 |
-| cs.LG  | 0.89      | 0.49   | 0.63     | 4038  |
-| cs.RO  | 0.95      | 0.78   | 0.86     | 2495  |
-| **Accuracy** |  |  | **0.84** |  |
-| **M Avg**    | **0.88** | **0.79** | **0.82** |  |
-| **W Avg**    | **0.85** | **0.84** | **0.83** |  |
+| Class        | Precision | Recall   | F1-score | Count |
+| ------------ | --------- | -------- | -------- | ----- |
+| cs.CL        | 0.80      | 0.96     | 0.87     | 4396  |
+| cs.CR        | 0.92      | 0.79     | 0.85     | 1450  |
+| cs.CV        | 0.82      | 0.95     | 0.88     | 10316 |
+| cs.LG        | 0.89      | 0.49     | 0.63     | 4038  |
+| cs.RO        | 0.95      | 0.78     | 0.86     | 2495  |
+| **Accuracy** |           |          | **0.84** |       |
+| **M Avg**    | **0.88**  | **0.79** | **0.82** |       |
+| **W Avg**    | **0.85**  | **0.84** | **0.83** |       |
 
+</center>
 
-</div>
-
-</div>
-
-</div>
 
 ## Discussion
 
 ### Impact of Embedding Size on Model Performance
 
 <center>
-<img src="images/comp-model-perf.png" width="80%">
+<img src="images/comp-model-perf.png" width="40%">
 </center>
 
 ## Conclusion
