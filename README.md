@@ -44,15 +44,15 @@
 
 ## Dataset Curation
 
-<center>
-<img src="images/CS_Categories.png" width="40%">
+<div align="center">
+<img src="images/CS_Categories.png" width="80%">
         </div>
-</center>
+</div>
 
 
 We curate the top-5 classes from arXiv CS papers.
 
-<center>
+<div align="center">
 
 | Category                          | Papers  | Percentage |
 | --------------------------------- | ------- | ---------- |
@@ -62,26 +62,26 @@ We curate the top-5 classes from arXiv CS papers.
 | cs.RO (Robotics)                  | 27,966  | 8.65%      |
 | cs.CR (Cryptography and Security) | 24,961  | 7.72%      |
 
-</center>
+</div>
 
 
 
 ### Dataset Distribution
 
-<center>
-<img src="images/traindata.png" width="40%">
-</center>
+<div align="center">
+<img src="images/traindata.png" width="80%">
+</div>
 
 
 #### OOD Test Data
 
-<center>
-<img src="images/testdata.png" width="40%">
-</center>
+<div align="center">
+<img src="images/testdata.png" width="80%">
+</div>
 
 ## Models
 
-<center>
+<div align="center">
 
 ### Model Architecture
 
@@ -114,34 +114,34 @@ We curate the top-5 classes from arXiv CS papers.
 | Parameters Size          | 76.82      | 153.19      | 305.92      |
 | **Estimated Total Size** | **463.34** | **589.71**  | **842.44**  |
 
-</center>
+</div>
 
 ## Results
 
 
-<center>
+<div align="center">
 
 #### Training and validation loss curves for GloveCNN models with embedding dimensions 50, 100 and 200.
-<img src="images/cnn-train-val-loss.png" width="60%">
-</center>
+<img src="images/cnn-train-val-loss.png" width="80%">
+</div>
 
 
 
-<center>
+<div align="center">
 
 #### Training and validation accuracy curves for GloveCNN models with embedding dimensions 50, 100 and 200.
-<img src="images/cnn-train-val-acc.png" width="60%">
-</center>
+<img src="images/cnn-train-val-acc.png" width="80%">
+</div>
 
 ---
 
 
 
-<center>
+<div align="center">
 
 ### Confusion Matrix for Glove50CNN for 2015-2020 and 2023
 
-<img src="images/glovecnn50-test_diff_cm.png" width="30%">   <img src="images/glovecnn50-test_same_cm.png" width="30%">
+<img src="images/glovecnn50-test_diff_cm.png" width="40%">   <img src="images/glovecnn50-test_same_cm.png" width="40%">
 
 ### Performance of Glove50CNN (2015-2020)
 
@@ -169,18 +169,18 @@ We curate the top-5 classes from arXiv CS papers.
 | **M Avg**    | **0.88**  | **0.79** | **0.82** |       |
 | **W Avg**    | **0.85**  | **0.84** | **0.83** |       |
 
-</center>
+</div>
 
 
 ## Discussion
 
 
-<center>
+<div align="center">
 
 ### Impact of Embedding Size on Model Performance
 
-<img src="images/comp-model-perf.png" width="40%">
-</center>
+<img src="images/comp-model-perf.png" width="80%">
+</div>
 
 ## Conclusion
 
